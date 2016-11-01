@@ -172,7 +172,44 @@ function Pool(maxSize) {
     };
 }
 
+function Bullet() {
+    //If true, Bullet is in use
+    this.alive = false;
 
+    //Sets Bullet values
+    this.spawn = function (x, y, speed) {
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+        this.alive = true;
+    };
+
+    /*
+     * Uses a "dirty rectangle" to erase the bullet and moves it.
+     * Returns true if the bullet moved off the screen, indicating that
+     * the bullet is ready to be cleared by the pool, otherwise draws
+     * the bullet.
+     */
+    this.draw = function () {
+      this.context.clearRect(this.x, this.y, this.width, this.height);
+        this.y -= this.speed;
+        if( this.y <= 0 - this.height) {
+            return true;
+        } else {
+            this.context.drawImage(ImageRepository.bullet, this.x, this.y);
+        }
+    };
+
+    // Resets bullet values
+    this.clear = function () {
+        this.x = 0;
+        this.y = 0;
+        this.speed = 0;
+        this.alive = false;
+    };
+}
+
+Bullet.prototype = new Drawable();
 
 /*
  Creates the Game object which will hold all objects and data for
