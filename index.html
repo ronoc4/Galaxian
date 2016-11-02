@@ -3,33 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Galaxian</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
 <!-- To play game open terminal and start python server ( python -m SimpleHTTPServer)
 then go to http://127.0.0.1:8000/ -->
-    <style>
-        canvas {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            background: transparent;
-        }
 
-        #background {
-            z-index: -2;
-        }
-
-        #main {
-            z-index: -1;
-        }
-
-        #ship {
-            z-index: 0;
-        }
-    </style>
 </head>
 <body>
-    <div id="headerImage">
-        <img src="img/Galaxian_logo.png">
+<div  id="mainContent">
+    <div id="titleScreen">
+        <div id="headerImage">
+            <img src="img/Galaxian_logo.png">
+        </div>
+        <div id="instructions">
+            <h2>Move with the arrow keys, fire with SPACEBAR</h2>
+            <h2>To play press any key</h2>
+        </div>
     </div>
+
     <!-- Canvas for the background -->
     <canvas id="background" width="600" height="360">
         Use an updated browser, yours does not support canvas
@@ -41,6 +31,7 @@ then go to http://127.0.0.1:8000/ -->
      one forth the screen.) -->
     <canvas id="ship" width="600" height="360">
     </canvas>
+</div>
 <script src="spaceShooterPartOne.js"></script>
 </body>
 </html>

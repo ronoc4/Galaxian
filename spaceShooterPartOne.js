@@ -28,11 +28,11 @@ function init() {
         game.start();
 }
 
-//TODO add function to remove the logo
-document.getElementById("headerImage").addEventListener("keypress", removeElement("headerImage"));
+//Pressing any key will remove the image and instructions
+window.addEventListener("keydown", removeElement, false);
 
-function removeElement(id) {
-    var elem = document.getElementById(id);
+function removeElement() {
+    var elem = document.getElementById("titleScreen");
     elem.remove(elem);
 }
 
