@@ -14,11 +14,6 @@
  */
 
 /*
-  Creating singleton object for images
- https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image
- */
-
-/*
  Initialize new game and start
  */
 var game = new Game();
@@ -28,7 +23,8 @@ function init() {
         game.start();
 }
 
-//Pressing any key will remove the image and instructions
+// Pressing any key will remove the image and instructions
+// https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/KeyboardEvent
 window.addEventListener("keydown", removeElement, false);
 
 function removeElement() {
@@ -37,6 +33,10 @@ function removeElement() {
 }
 
 var ImageRepository = new function () {
+    /*
+     Creating singleton object for images
+     https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image
+     */
     // Define images
     this.empty = null;
     this.background = new Image();
@@ -45,6 +45,8 @@ var ImageRepository = new function () {
     //Check if images have loaded before game
     var numImages = 3;
     var numLoaded = 0;
+
+    //Ensuring that all images are loaded before game begins
     function imageLoaded() {
         numLoaded++;
         if (numLoaded === numImages) {
@@ -96,7 +98,7 @@ function Drawable() {
  canvas and creates the illusion of moving by panning the image.
  */
 function Background() {
-    this.speed = 1; // Redefine speed of the background for panning
+    this.speed = 2; // Redefine speed of the background for panning
 
     // Implement abstract function
     this.draw = function() {
@@ -402,7 +404,7 @@ function animate() {
 }
 
 /**
- requestAnim shim layer by Paul Irish
+ request Anim shim layer by Paul Irish
  Finds the first API that works to optimize the animation loop,
  otherwise defaults to setTimeout().
  https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
